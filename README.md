@@ -1,13 +1,12 @@
 # EXPERIMENT-02-INTERFACING-A-DIGITAL-INPUT-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE:**
 
-**NAME:**
+**NAME:** Arunkumar S A
 
-**ROLL NO:**
+**ROLL NO:** 212223220009
 
-**DEPARTMENT:**
+**DEPARTMENT:** IT
 
 ## Aim
 
@@ -102,10 +101,61 @@ IR technology is used in a wide range of wireless applications which includes re
 ## STM 32 CUBE PROGRAM
 
 ```
-// Your STM 32 CUBE Program code here
+#include "main.h"
+#include <stdbool.h>
+UART_HandleTypeDef huart2;
+bool IRSENSOR;
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
+void IRPAIR()
+{
+	IRSENSOR = HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+	if(IRSENSOR==0)
+	{
+		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+		HAL_Delay(2000);
+		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+}
+int main(void)
+{
+    HAL_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    MX_USART2_UART_Init();
+    while (1)
+    {
+       IRPAIR();
+    }
+}
 ```
 
 ## OUTPUT
+
+<img width="1155" height="326" alt="iot 2" src="https://github.com/user-attachments/assets/22e0059d-c10c-45f5-a9e0-648914795142" />
+
+<img width="560" height="1104" alt="iot2 ou" src="https://github.com/user-attachments/assets/4d03b5bd-1852-45f4-a3eb-1f92fd8e2738" />
+
+<img width="576" height="1280" alt="WhatsApp Image 2026-10-31 at 8 46 52 AM" src="https://github.com/user-attachments/assets/46eab7d0-97b8-4d60-be59-f009077be637" />
+
+<img width="1492" height="867" alt="EXP2 IOC 2" src="https://github.com/user-attachments/assets/1e452b73-423f-49c0-9c58-797948704e6d" />
+
+
+
+
+
+
+
+
+
+
 
 ## Result
 
